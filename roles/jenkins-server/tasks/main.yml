@@ -1,5 +1,27 @@
 ---
-# Ubuntu/Debian
+# 🔹 Install Java based on OS
+- name: Install Java on Ubuntu/Debian
+  shell: |
+    apt update
+    apt install -y openjdk-17-jdk
+  when: ansible_os_family == "Debian"
+
+- name: Install Java on RHEL/CentOS/Fedora
+  shell: |
+    yum install -y java-latest-openjdk
+  when: ansible_os_family == "RedHat"
+
+- name: Install Java on Arch Linux
+  shell: |
+    pacman -Sy --noconfirm jdk-openjdk
+  when: ansible_os_family == "Archlinux"
+
+- name: Install Java on openSUSE
+  shell: |
+    zypper install -y java-17-openjdk
+  when: ansible_os_family == "Suse"
+
+# 🔹 Install Jenkins based on OS
 - name: Install Jenkins on Ubuntu/Debian
   block:
     - name: Install dependencies
@@ -20,7 +42,6 @@
         update_cache: yes
   when: ansible_os_family == "Debian"
 
-# RHEL/CentOS/Fedora
 - name: Install Jenkins on RHEL/CentOS/Fedora
   block:
     - name: Install dependencies
@@ -39,7 +60,6 @@
         state: present
   when: ansible_os_family == "RedHat"
 
-# Arch Linux
 - name: Install Jenkins on Arch Linux
   block:
     - name: Install dependencies
@@ -52,7 +72,6 @@
       shell: pacman -Sy --noconfirm jenkins
   when: ansible_os_family == "Archlinux"
 
-# openSUSE
 - name: Install Jenkins on openSUSE
   block:
     - name: Install dependencies
@@ -69,7 +88,7 @@
         state: present
   when: ansible_os_family == "Suse"
 
-# Enable and Start Jenkins Service
+# 🔹 Enable and Start Jenkins Service
 - name: Start and Enable Jenkins Service
   systemd:
     name: jenkins
