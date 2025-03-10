@@ -23,3 +23,8 @@
   become: true
   roles:
     - base
+
+- hosts: all
+  become: true
+  roles:
+    - jenkins-server

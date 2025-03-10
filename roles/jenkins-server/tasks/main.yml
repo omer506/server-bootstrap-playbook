@@ -1,0 +1,77 @@
+---
+# Ubuntu/Debian
+- name: Install Jenkins on Ubuntu/Debian
+  block:
+    - name: Install dependencies
+      apt:
+        name: ["wget", "curl", "gnupg"]
+        state: present
+        update_cache: yes
+
+    - name: Add Jenkins repository and key
+      shell: |
+        wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+        echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | tee /etc/apt/sources.list.d/jenkins.list
+
+    - name: Install Jenkins
+      apt:
+        name: jenkins
+        state: present
+        update_cache: yes
+  when: ansible_os_family == "Debian"
+
+# RHEL/CentOS/Fedora
+- name: Install Jenkins on RHEL/CentOS/Fedora
+  block:
+    - name: Install dependencies
+      yum:
+        name: ["wget", "curl"]
+        state: present
+
+    - name: Add Jenkins repository
+      shell: |
+        wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+        rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+    - name: Install Jenkins
+      yum:
+        name: jenkins
+        state: present
+  when: ansible_os_family == "RedHat"
+
+# Arch Linux
+- name: Install Jenkins on Arch Linux
+  block:
+    - name: Install dependencies
+      pacman:
+        name: ["wget", "curl"]
+        state: present
+        update_cache: yes
+
+    - name: Install Jenkins (AUR)
+      shell: pacman -Sy --noconfirm jenkins
+  when: ansible_os_family == "Archlinux"
+
+# openSUSE
+- name: Install Jenkins on openSUSE
+  block:
+    - name: Install dependencies
+      zypper:
+        name: ["wget", "curl"]
+        state: present
+
+    - name: Add Jenkins repository
+      shell: zypper ar -f https://pkg.jenkins.io/opensuse-stable jenkins
+
+    - name: Install Jenkins
+      zypper:
+        name: jenkins
+        state: present
+  when: ansible_os_family == "Suse"
+
+# Enable and Start Jenkins Service
+- name: Start and Enable Jenkins Service
+  systemd:
+    name: jenkins
+    state: started
+    enabled: yes
