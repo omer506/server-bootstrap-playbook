@@ -1,26 +1,25 @@
-- name: Create user omer
+- name: Create user sysadmin
   tags: always
   user:
-    name: omer
-#    group: omer
+    name: sysadmin
     state: present
     shell: /bin/bash
     createhome: yes
 
-- name: Add sudoer file for omer
+- name: Add sudoer file for sysadmin
   tags: always
   copy:
     src: sudoer_omer
-    dest: /etc/sudoers.d/omer
+    dest: /etc/sudoers.d/sysadmin
     owner: root
     group: root
     mode: 0440
 
-- name: Add SSH key for omer
+- name: Add SSH key for sysadmin
   tags: always
   authorized_key:
-    user: omer
-    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCggeMZo/9Cen78b+HzbCLLuxe/h1WpMD740nlWvfKkRscCM+heVPJic3D8I/b4Sn1N0/fkEoZmigWUZuBsivL+5po/vOyQiPayCny8o1kRjbGR9BEuHlJH1zuoOAymxPdYmKsatKLKcKGDtNZSBhiwlD9yqEFY9AenjWANFUlLyHOYAAk28S5vnoPQRecy4mgheDMrOb2UKFQowOkBJ2kK6Wy96rcPP1YqWm6b0BgDG6C/THRQudXlH8sAiCGYfL3EB9ETQvxbfy8ilYNRxf9kgWdPuYcZHuLse2RqWKAClIIfXegOmtvCux2Nn0e08Lk8syirxukMdyxislu2CTk+8QYi8/NAjOJYJah1ZR3LIKS0SYvF2eO2wGphYQvZV1lGnPMI8U0rIFRZylY3kXjjW9I4i9B8rpPLgofduhs3VMwNepANg0D0RvXx7YaIxSznI1aaPDwqGcm1X90clWCxVQwdhhEVBiXPW6V40rkvXPsJpSH3Eb31b8XUUy9s4bs= omer@master"
+    user: sysadmin
+    key: "Public Key"
 
 - name: Generate sshd_config file from template
   tags: ssh
