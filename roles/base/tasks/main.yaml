@@ -9,7 +9,7 @@
 - name: Add sudoer file for sysadmin
   tags: always
   copy:
-    src: sudoer_omer
+    src: sudoer_sysadmin
     dest: /etc/sudoers.d/sysadmin
     owner: root
     group: root
