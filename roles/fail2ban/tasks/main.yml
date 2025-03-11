@@ -1,0 +1,11 @@
+---
+# Fail2ban Main Task File
+
+- name: Include install fail2ban task
+  include_tasks: install.yml
+
+- name: Include configure fail2ban task
+  include_tasks: configure.yml
+
+- name: Include start fail2ban task
+  include_tasks: start.yml

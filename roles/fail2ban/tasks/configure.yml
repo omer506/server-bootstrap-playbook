@@ -1,0 +1,10 @@
+---
+
+- name: Configuring fail2ban using template
+  template:
+    src:  "{{ fail2ban_template_file }}"
+    dest: /etc/fail2ban/jail.local
+    owner: root
+    group: root
+    mode: 0664
+  notify: restart_fail2ban

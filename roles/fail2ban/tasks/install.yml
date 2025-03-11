@@ -1,0 +1,10 @@
+---
+
+- name: Debug fail2ban_package
+  debug:
+    var: fail2ban_package
+
+- name: Install Fail2Ban on RHEL-based systems
+  package:
+    name: "{{ fail2ban_package }}"
+    state: latest
