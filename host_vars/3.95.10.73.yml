@@ -1,6 +1,0 @@
-ansible_port: 22
-ssh_users: "sysadmin ansible"
-ssh_template_file: sshd_config_ubuntu.j2
-apache_package_name: apache2
-apache_service: apache2
-php_packpage_name: libapache2-mod-php
