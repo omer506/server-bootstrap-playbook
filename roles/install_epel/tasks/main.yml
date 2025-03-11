@@ -1,0 +1,5 @@
+- name: Install EPEL repository for RHEL-based distributions
+  dnf:
+    name: epel-release
+    state: present
+  when: ansible_distribution in ["CentOS", "RedHat", "Fedora", "OracleLinux"]
