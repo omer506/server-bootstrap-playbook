@@ -16,15 +16,26 @@ Features
 **Project Structure:**
 
 ├── inventory/              # Inventory files (hosts, groups, variables)
+
 │   ├── servers      # List of servers grouped by roles
+
 │   ├── host_vars/          # Variables assigned to individual hosts
+
 ├── roles/                  # Role-based configurations
+
 │   ├── base/               # System essentials and hardening
+
 │   ├── fail2ban/           # Intrusion prevention configuration
+
 │   ├── jenkins-server/     # Jenkins installation and setup
+
 ├── site.yml                # Main playbook that runs all roles
+
+
 ├── README.md               # Project documentation
+
 └── ansible.cfg             # Ansible configuration file
+
 
 **Pre-requisites:**
 
