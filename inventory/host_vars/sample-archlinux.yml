@@ -1,0 +1,11 @@
+ansible_port: 22
+apache_package_name: apache
+apache_service: httpd
+php_package_name: php
+ssh_users: "sysadmin ansible"
+ssh_template_file: sshd_config_arch.j2
+fail2ban_package: fail2ban
+fail2ban_template_file: jail-conf_arch.j2
+fail2ban_distro_path: paths-arch.conf
+ban_time: 30m
+max_retry: 3
