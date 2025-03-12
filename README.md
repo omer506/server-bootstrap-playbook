@@ -36,10 +36,13 @@ Features
 Modify inventory/inventory.ini to include your target servers:
 
 [prod]
+
 server1.example.com
+
 server2.example.com
 
 [jenkins-server]
+
 jenkins.example.com
 
 
