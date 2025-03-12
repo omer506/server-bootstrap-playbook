@@ -43,11 +43,16 @@ server2.example.com
 jenkins.example.com
 
 
+
 Run the Playbook:
 ansible-playbook site.yml
 
+
+
 Check Configuration:
 ansible all -i inventory/servers -m ping
+
+
 
 **Playbook Breakdown** (site.yml)
 
