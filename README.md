@@ -6,10 +6,12 @@ This repository contains an Ansible playbook (site.yml) for managing multiple se
 Features
 
 ✅ Automated package updates across different Linux distributions
+
 ✅ Role-based deployment (Base system, Fail2Ban, Jenkins)
+
 ✅ Multi-distro support: RHEL, Debian, Arch, SUSE, and Alpine
-✅ Secure SSH access and firewall configuration
-✅ CI/CD automation with Jenkins
+
+
 
 **Project Structure:**
 
